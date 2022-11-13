@@ -61,8 +61,8 @@ async function processImage(url: string, imagePath: string, thumbPath: string) {
   const imagesContent = imagesUrls
     .map(
       (_, index) => `
-  <a href="/jamstack_gatsby_elitonjr/images/${index}.jpg">
-    <img src="/jamstack_gatsby_elitonjr/thumbImages/${index}.jpg">
+  <a href="/Jamstack_Gatsby_elitonjr/images/${index}.jpg">
+    <img src="/Jamstack_Gatsby_elitonjr/thumbImages/${index}.jpg">
   </a>
   `
     )
