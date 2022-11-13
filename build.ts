@@ -31,11 +31,11 @@ async function processImage(url: string, imagePath: string, thumbPath: string) {
       imageStream.close();
     });
 
-    request.pipe(sharpInstance);
-
     thumbStream.on("finish", () => {
       thumbStream.close();
     });
+
+    request.pipe(sharpInstance);
   });
 }
 
@@ -47,18 +47,18 @@ async function processImage(url: string, imagePath: string, thumbPath: string) {
   shell.mkdir(path.join("public", "thumbImages"));
 
   console.log("Downloading images...");
-  const images = generateImages(10);
+  const imagesUrls = generateImages(10);
   await Promise.all(
-    images.map((imageUrl, index) =>
+    imagesUrls.map((imagesUrl, index) =>
       processImage(
-        imageUrl,
+        imagesUrl,
         path.join("public", "images", `${index}.jpg`),
         path.join("public", "thumbImages", `${index}.jpg`)
       )
     )
   );
 
-  const imagesContent = images
+  const imagesContent = imagesUrls
     .map(
       (_, index) => `
   <a href="/jamstack_gatsby_elitonjr/images/${index}.jpg">
